@@ -1,0 +1,7 @@
+{
+  "name": "controleDeHoras",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
