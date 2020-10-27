@@ -7,10 +7,11 @@ import { ListarHoraComponent } from './listar';
 
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
+  declarations: [
     ListarHoraComponent
+  ],
+  imports: [
+    CommonModule    
   ],
   providers: [
     HoraService
