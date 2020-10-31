@@ -12,7 +12,8 @@ import { IonicModule } from "@ionic/angular";
     ListarHoraComponent
   ],
   imports: [
-    CommonModule    
+    CommonModule,
+    IonicModule    
   ],
   providers: [
     HoraService
