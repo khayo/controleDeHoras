@@ -5,6 +5,8 @@ import { IonicModule } from "@ionic/angular";
 import { HoraService } from "./shared";
 import { ListarHoraComponent } from './listar';
 import { CadastrarHoraComponent } from './cadastrar';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,6 +17,8 @@ import { CadastrarHoraComponent } from './cadastrar';
   ],
   imports: [
     CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
     IonicModule    
   ],
   providers: [
