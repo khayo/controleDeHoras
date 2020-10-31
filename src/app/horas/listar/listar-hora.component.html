@@ -1,13 +1,31 @@
-<ion-list>
-  <ion-item>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
-        <ion-card-title>Awesome Title</ion-card-title>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Controle de Horas
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="outline">
+        Novo
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let hora of horas" href="#">
+      <ion-card-header *ngIf="hora.tipo !== tipoRegistro.SAIDA">
+        <ion-card-subtitle>{{hora.tipo}}</ion-card-subtitle>
+        <ion-card-title>{{hora.hora.getDate()}}/{{hora.hora.getMonth() }}/{{hora.hora.getFullYear()}} - {{hora.hora.getHours()}}h{{hora.hora.getMinutes()}} </ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        Awesome content
-      </ion-card-content>
+      <ion-card-header *ngIf="hora.tipo === tipoRegistro.SAIDA">
+        <ion-card-subtitle>{{hora.tipo}} - {{hora.setor}} - {{hora.equipe}} </ion-card-subtitle>
+        <ion-card-title>{{hora.hora.getDate()}}/{{hora.hora.getMonth() }}/{{hora.hora.getFullYear()}} - {{hora.hora.getHours()}}h{{hora.hora.getMinutes()}} - {{hora.ultimoCliente}} </ion-card-title>
+      </ion-card-header>
     </ion-card>
-  </ion-item>
-</ion-list>
+    <ion-card *ngIf="horas.length==0">
+      <ion-card-content>Nenhuma hora cadastrada.</ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
