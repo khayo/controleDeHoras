@@ -5,8 +5,8 @@ export class Hora {
 
     constructor(
         public id?: number,
-        public hora?: Date,
         public tipo?: TipoRegistro,
+        public hora?: Date,
         public ultimoCliente?: string,
         public equipe?: string,
         public setor?: Setor
