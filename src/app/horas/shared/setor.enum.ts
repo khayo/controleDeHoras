@@ -1,5 +1,5 @@
-export enum setor{
-    Corretiva = 1,
-    Emergencia = 2,
-    Preventiva = 3
+export enum Setor{
+    CORRETIVA = "Corretiva",
+    EMERGENCIA = "Emercência",
+    PREVENTIVA = "Preventiva"
 }
