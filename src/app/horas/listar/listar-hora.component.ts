@@ -20,8 +20,8 @@ export class ListarHoraComponent implements OnInit {
     let dia = new Date(date);
     let teste = new Date(new  Date().getTime());
     this.horas = [
-      new Hora(1, data, TipoRegistro.ENTRADA, "Setin Downtown", "Guilherme", Setor.EMERGENCIA),
-      new Hora(2, teste, TipoRegistro.SAIDA, "Murano", "Guilherme", Setor.PREVENTIVA),
+      new Hora(1, TipoRegistro.ENTRADA, data, "Setin Downtown", "Guilherme", Setor.EMERGENCIA),
+      new Hora(2, TipoRegistro.SAIDA, teste,"Murano", "Guilherme", Setor.PREVENTIVA),
     ]
   }
   listarTodos(): Hora[]{
