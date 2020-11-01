@@ -15,17 +15,24 @@
 <ion-content>
   <ion-list>
     <ion-card *ngFor="let hora of horas" href="#">
-      <ion-card-header *ngIf="hora.tipo !== tipoRegistro.SAIDA">
+      
+      <!-- card para outros tipos de registro diferentes de saida -->
+      <ion-card-header *ngIf="hora.tipo !== 'SAIDA'">
         <ion-card-subtitle>{{hora.tipo}}</ion-card-subtitle>
-        <ion-card-title>{{hora.hora.getDate()}}/{{hora.hora.getMonth() }}/{{hora.hora.getFullYear()}} - {{hora.hora.getHours()}}h{{hora.hora.getMinutes()}} </ion-card-title>
+        <ion-card-title>{{hora.hora | date: 'dd/MM/yyyy HH:mm'}}</ion-card-title>
       </ion-card-header>
-      <ion-card-header *ngIf="hora.tipo === tipoRegistro.SAIDA">
-        <ion-card-subtitle>{{hora.tipo}} - {{hora.setor}} - {{hora.equipe}} </ion-card-subtitle>
-        <ion-card-title>{{hora.hora.getDate()}}/{{hora.hora.getMonth() }}/{{hora.hora.getFullYear()}} - {{hora.hora.getHours()}}h{{hora.hora.getMinutes()}} - {{hora.ultimoCliente}} </ion-card-title>
+
+      <!-- card para tipo de registro de saída -->
+      <ion-card-header *ngIf="hora.tipo === 'SAIDA'">
+        <ion-card-subtitle>{{ hora.tipo }} - {{ hora.setor }} - {{ hora.equipe }} </ion-card-subtitle>
+        <ion-card-title>{{ hora.hora | date: 'dd/MM/yyyy HH:mm'}}</ion-card-title>
       </ion-card-header>
     </ion-card>
+
+    <!-- card para quando a lista estiver vazia -->
     <ion-card *ngIf="horas.length==0">
       <ion-card-content>Nenhuma hora cadastrada.</ion-card-content>
     </ion-card>
+
   </ion-list>
 </ion-content>
