@@ -16,6 +16,7 @@ export class ListarHoraComponent implements OnInit {
 
   ngOnInit() {
     this.horas = this.listarTodos();
+    /* mockObject para teste */
 /*     let data = Date.now();   
     let teste = new  Date().getTime();
     this.horas = [
@@ -30,7 +31,7 @@ export class ListarHoraComponent implements OnInit {
   }
 
   listarTodos(): Hora[]{
-    return this.horaService.listarTodos();
+    return this.horaService.listarTodos().reverse();
   }
 
 }
