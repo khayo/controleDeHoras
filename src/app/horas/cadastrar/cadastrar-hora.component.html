@@ -1,3 +1,49 @@
-<p>
-  cadastrar-hora works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cadastrar Hora
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" novalidate>
+    <ion-item>
+      <ion-label position="stacked">Tipo</ion-label>
+      <ion-select formControlName="tipo" id="tipo" interface="action-sheet" placeholder="Selecione...">
+        <ion-select-option *ngFor="let key of keysTipoRegistro" [value]="key">
+          {{tipoRegistro[key]}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="validation-errors" *ngIf="form.controls.tipo.dirty && (form.value.valueOf().tipo == 'SAIDA')">
+      <ion-item>
+        <ion-label position="stacked">Último Cliente</ion-label>
+        <ion-input formControlName="ultimoCliente" type="text" id="ultimoCliente"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Equipe</ion-label>
+        <ion-input formControlName="equipe" type="text" id="equipe"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Setor</ion-label>
+        <ion-select formControlName="setor" interface="action-sheet" placeholder="Selecione..." id="setor">
+          <ion-select-option *ngFor="let key of keysSetor" [value]="key">
+            {{setor[key]}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <ion-button expand="block" size="large" color="primary" fill="outline" [disabled]="form.invalid" (click)="teste()">
+      Cadastrar</ion-button>
+    <ion-button expand="block" size="large" color="danger" fill="outline" [routerLink]="['/horas/listar']">Cancelar
+    </ion-button>
+  </form>
+
+  <app-form-debug [form]="form"></app-form-debug>
+
+</ion-content>
