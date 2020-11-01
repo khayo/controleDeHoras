@@ -7,7 +7,7 @@ import { Hora, HoraService, Setor, TipoRegistro } from '../shared';
   styleUrls: ['./listar-hora.component.scss'],
 })
 export class ListarHoraComponent implements OnInit {
-
+  
   horas: Hora[];
   tipoRegistro = TipoRegistro;
 
@@ -15,15 +15,19 @@ export class ListarHoraComponent implements OnInit {
 
   ngOnInit() {
     this.horas = this.listarTodos();
-    let data = new Date(1603586748659);    
-    let date = new Date().getTime();
-    let dia = new Date(date);
-    let teste = new Date(new  Date().getTime());
+/*     let data = Date.now();   
+    let teste = new  Date().getTime();
     this.horas = [
       new Hora(1, TipoRegistro.ENTRADA, data, "Setin Downtown", "Guilherme", Setor.EMERGENCIA),
       new Hora(2, TipoRegistro.SAIDA, teste,"Murano", "Guilherme", Setor.PREVENTIVA),
-    ]
+    ] ; */
+
   }
+
+  ionViewWillEnter(){
+    this.horas = this.listarTodos();
+  }
+
   listarTodos(): Hora[]{
     return this.horaService.listarTodos();
   }
