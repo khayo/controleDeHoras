@@ -10,6 +10,7 @@ export class ListarHoraComponent implements OnInit {
   
   horas: Hora[];
   tipoRegistro = TipoRegistro;
+  setor = Setor;
 
   constructor(private horaService: HoraService) { }
 
