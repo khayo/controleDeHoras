@@ -58,7 +58,7 @@
       </ion-select>
     </ion-item>
 
-    <div class="validation-errors" *ngIf="form.controls.tipo.dirty && (form.value.valueOf().tipo == 'SAIDA')">
+    <div class="validation-errors" *ngIf="form.controls.tipo.valid && (form.value.valueOf().tipo == 'SAIDA')">
       <ion-item>
         <ion-label position="stacked">Último Cliente</ion-label>
         <ion-input formControlName="ultimoCliente" type="text" id="ultimoCliente"></ion-input>
