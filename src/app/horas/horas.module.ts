@@ -7,13 +7,14 @@ import { ListarHoraComponent } from './listar';
 import { CadastrarHoraComponent } from './cadastrar';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormDebugComponent } from './shared/form-debug';
 
 
 @NgModule({
   declarations: [
     ListarHoraComponent,
-    CadastrarHoraComponent
+    CadastrarHoraComponent,
+    FormDebugComponent
   ],
   imports: [
     CommonModule,
