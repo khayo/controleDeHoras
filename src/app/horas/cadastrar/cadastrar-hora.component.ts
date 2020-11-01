@@ -12,6 +12,7 @@ export class CadastrarHoraComponent implements OnInit {
 
   hora: Hora;
   form: FormGroup;
+
   tipoRegistro = TipoRegistro;
   setor = Setor;
   keysTipoRegistro = [];
