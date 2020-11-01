@@ -14,7 +14,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let hora of horas" href="#">
+    <ion-card *ngFor="let hora of horas" [routerLink]="['/horas/editar', hora.id]">
       
       <!-- card para outros tipos de registro diferentes de saida -->
       <ion-card-header *ngIf="hora.tipo !== 'SAIDA'">
