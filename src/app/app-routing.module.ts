@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HorasRoutes } from "./horas";
+import { PainelRoutes } from './painel-controle';
+
 
 const routes: Routes = [
 /*   {
@@ -12,7 +14,8 @@ const routes: Routes = [
     redirectTo: '/horas/listar',
     pathMatch: 'full'
   },
-  ...HorasRoutes
+  ...HorasRoutes,
+  ...PainelRoutes
 ];
 
 @NgModule({
