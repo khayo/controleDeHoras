@@ -12,7 +12,6 @@ export class EditarHoraComponent implements OnInit {
 
   hora: Hora;
   form: FormGroup;
-  data: number;
 
 
   tipoRegistro = TipoRegistro;
@@ -35,7 +34,7 @@ export class EditarHoraComponent implements OnInit {
     const id = +this.route.snapshot.params['id'];
     this.gerarForm();
     this.hora = this.horaService.buscaPorId(id);
-    this.passaValorParaForm();
+    this.preencheForm();
   }
   
   gerarForm() {
@@ -56,12 +55,19 @@ export class EditarHoraComponent implements OnInit {
   
   atualizar() {
     if (this.form.invalid) return;
-    this.transformaData();
-    this.hora = this.form.value;
-    this.hora.hora = this.data;
-    console.log(this.hora);
-   /*  this.horaService.atualizar(this.hora);
-    this.router.navigate(["/horas"]); */
+    this.preencheObjeto();
+    this.horaService.atualizar(this.hora);
+    this.router.navigate(["/horas"]);
+  }
+  
+  
+  preencheObjeto(){
+    this.hora.id = this.form.get('id').value;    
+    this.hora.hora = this.transformaData();
+    this.hora.tipo = this.form.get('tipo').value; 
+    this.hora.ultimoCliente = this.form.get('ultimoCliente').value;
+    this.hora.equipe = this.form.get('equipe').value;
+    this.hora.setor = this.form.get('setor').value;
   }
 
   transformaData(){
@@ -71,11 +77,10 @@ export class EditarHoraComponent implements OnInit {
     let horario = this.form.get('horario').value;
     let minuto = this.form.get('minuto').value;
     
-    this.data = new Date(ano, mes, dia, horario, minuto).getTime();
-    console.log(this.data);
+    return new Date(ano, mes, dia, horario, minuto).getTime();
   }
   
-  passaValorParaForm(){
+  preencheForm(){
     let temp = new Date(this.hora.hora);
     let dia = temp.getDay();
     let mes = temp.getMonth();
