@@ -72,7 +72,7 @@ export class EditarHoraComponent implements OnInit {
 
   transformaData(){
     let dia = this.form.get('dia').value;
-    let mes = this.form.get('mes').value;
+    let mes = this.form.get('mes').value - 1; //por algum motivo ele está salvando com 1 mes a mais
     let ano = this.form.get('ano').value;
     let horario = this.form.get('horario').value;
     let minuto = this.form.get('minuto').value;
@@ -82,15 +82,19 @@ export class EditarHoraComponent implements OnInit {
   
   preencheForm(){
     let temp = new Date(this.hora.hora);
-    let dia = temp.getDay();
-    let mes = temp.getMonth();
+    console.log('hora.hora')
+    console.log(this.hora.hora);
+    console.log('temp')
+    console.log(temp);
+    let dia = temp.getDate();
+    let mes = temp.getMonth() + 1; //por algum motivo esta mostrando com um mês a menos
     let ano = temp.getFullYear();
     let horario = temp.getHours();
     let minuto = temp.getMinutes();
   
     this.form.get('id').setValue(this.hora.id);
-    this.form.get('dia').setValue(dia + 1);
-    this.form.get('mes').setValue(mes + 1);
+    this.form.get('dia').setValue(dia);
+    this.form.get('mes').setValue(mes);
     this.form.get('ano').setValue(ano);
     this.form.get('horario').setValue(horario);
     this.form.get('minuto').setValue(minuto);
