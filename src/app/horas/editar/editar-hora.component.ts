@@ -41,10 +41,11 @@ export class EditarHoraComponent implements OnInit {
   gerarForm() {
     this.form = this.fb.group({
       id: ['', []],
+      hora: ['', []],
       dia: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(1), Validators.max(31)]],
       mes: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(1), Validators.max(12)]],
       ano: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4) ]],
-      hora: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(0), Validators.max(23)]],
+      horario: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(0), Validators.max(23)]],
       minuto: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(0), Validators.max(60)]],
       tipo: ['', [Validators.required]],
       ultimoCliente: ['', []],
@@ -55,20 +56,22 @@ export class EditarHoraComponent implements OnInit {
   
   atualizar() {
     if (this.form.invalid) return;
-
+    this.transformaData();
     this.hora = this.form.value;
-    this.horaService.atualizar(this.hora);
-    this.router.navigate(["/horas"]);
+    this.hora.hora = this.data;
+    console.log(this.hora);
+   /*  this.horaService.atualizar(this.hora);
+    this.router.navigate(["/horas"]); */
   }
 
   transformaData(){
     let dia = this.form.get('dia').value;
     let mes = this.form.get('mes').value;
     let ano = this.form.get('ano').value;
-    let hora = this.form.get('hora').value;
+    let horario = this.form.get('horario').value;
     let minuto = this.form.get('minuto').value;
     
-    this.data = new Date(ano, mes, dia, hora, minuto).getTime();
+    this.data = new Date(ano, mes, dia, horario, minuto).getTime();
     console.log(this.data);
   }
   
@@ -77,16 +80,17 @@ export class EditarHoraComponent implements OnInit {
     let dia = temp.getDay();
     let mes = temp.getMonth();
     let ano = temp.getFullYear();
-    let hora = temp.getHours();
+    let horario = temp.getHours();
     let minuto = temp.getMinutes();
   
     this.form.get('id').setValue(this.hora.id);
     this.form.get('dia').setValue(dia + 1);
     this.form.get('mes').setValue(mes + 1);
     this.form.get('ano').setValue(ano);
-    this.form.get('hora').setValue(hora);
+    this.form.get('horario').setValue(horario);
     this.form.get('minuto').setValue(minuto);
-    
+
+    this.form.get('hora').setValue(this.hora.hora);
     this.form.get('tipo').setValue(this.hora.tipo);
     this.form.get('ultimoCliente').setValue(this.hora.ultimoCliente);
     this.form.get('equipe').setValue(this.hora.equipe);

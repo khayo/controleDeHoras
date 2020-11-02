@@ -36,7 +36,7 @@
           <ion-col size="4">
             <ion-item>
               <ion-label position="stacked">Hora</ion-label>
-              <ion-input formControlName="hora"></ion-input>
+              <ion-input formControlName="horario"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col size="4">
@@ -79,7 +79,7 @@
       </ion-item>
     </div>
 
-    <ion-button expand="block" size="large" color="primary" fill="outline" [disabled]="form.invalid" (click)="debud()">
+    <ion-button expand="block" size="large" color="primary" fill="outline" [disabled]="form.invalid" (click)="atualizar()">
       Editar</ion-button>
     <ion-button expand="block" size="large" color="danger" fill="outline" [routerLink]="['/horas/listar']">Cancelar
     </ion-button>
