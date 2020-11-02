@@ -1,3 +1,40 @@
-<p>
-  painel works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Painel de Controle
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label position="stacked">Hora entrada</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Hora Saida</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Tempo Almoço</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Salário Bruto</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Periculosidade</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+    
+      <ion-button expand="block" size="large" color="primary" fill="outline">
+        Salvar
+      </ion-button>
+      <ion-button expand="block" size="large" color="danger" fill="outline">
+        Cancelar
+      </ion-button>
+    
+
+  </form>
+</ion-content>
