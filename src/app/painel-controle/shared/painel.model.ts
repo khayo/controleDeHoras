@@ -1,10 +1,11 @@
 export class Painel {
-    
+
     constructor(
         public horaEntrada?: number,
         public horaSaida?: number,
         public tempoAlmoco?: number,
-        public salarioBruto?: number
+        public salarioBruto?: number,
+        public periculosidade?: number
     ) {}
 }
 
@@ -14,4 +15,6 @@ saida           1060    17:00
 almoco          72      1:12
 na empresa      640     10:00
 trabalhando     568     8:48
+
+periculosidade  30%
  */
