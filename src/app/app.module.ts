@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HorasModule } from './horas';
+import { PainelControleModule } from './painel-controle';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { HorasModule } from './horas';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    HorasModule
+    HorasModule,
+    PainelControleModule
   ],
   providers: [
     StatusBar,
