@@ -3,6 +3,11 @@
     <ion-title>
       Editar Hora
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" fill="outline" (click)="remover($event, hora)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
