@@ -34,7 +34,7 @@ export class HoraService {
       objs[index] = hora;
     }
   });
-  localStorage['hora'] = JSON.stringify(horas);
+  localStorage['horas'] = JSON.stringify(horas);
   }
 
   remover(id: number): void {
