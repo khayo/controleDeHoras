@@ -5,36 +5,38 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-  <form>
+  <form [formGroup]="form" novalidate>
     <ion-item>
       <ion-label position="stacked">Hora entrada</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="horaEntrada" id="horaEntrada" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Hora Saida</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="horaSaida" id="horaSaida" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Tempo Almoço</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="tempoAlmoco" id="tempoAlmoco" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Salário Bruto</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="salarioBruto" id="salarioBruto" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Periculosidade</ion-label>
-      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-checkbox formControlName="periculosidade" slot="start"></ion-checkbox>
     </ion-item>
-    
-      <ion-button expand="block" size="large" color="primary" fill="outline">
-        Salvar
-      </ion-button>
-      <ion-button expand="block" size="large" color="danger" fill="outline">
-        Cancelar
-      </ion-button>
-    
+
+    <ion-button expand="block" size="large" color="primary" fill="outline" (click)="salvar()">
+      Salvar
+    </ion-button>
+    <ion-button expand="block" size="large" color="danger" fill="outline">
+      Cancelar
+    </ion-button>
 
   </form>
+    
+<!-- <app-form-debug [form]="form"></app-form-debug>  --> 
 </ion-content>

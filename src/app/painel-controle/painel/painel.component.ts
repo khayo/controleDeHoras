@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Painel, PainelService } from '../shared';
 
 @Component({
   selector: 'app-painel',
@@ -7,8 +10,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PainelComponent implements OnInit {
 
-  constructor() { }
+  painel: Painel;
+  form: FormGroup;
 
-  ngOnInit() {}
+  constructor(
+    private painelService: PainelService,
+    private fb: FormBuilder,
+    private router: Router
+  ) { }
+
+  ngOnInit() {
+    this.gerarForm();
+    this.exibir();
+    console.log('ngOnInit');
+  }
+
+  gerarForm() {
+    this.form = this.fb.group({
+      horaEntrada: ['', []],
+      horaSaida: ['', []],
+      tempoAlmoco: ['', []],
+      salarioBruto: ['', []],
+      periculosidade: ['', []]
+    })
+  }
+
+  exibir() {
+    this.painel = this.painelService.exibir();
+    console.log(this.painel);
+    this.form.setValue(this.painel);  
+  }
+
+  salvar() {
+    if (this.form.invalid) {
+      return false;
+    } else {
+      this.painel = this.form.value;
+      this.painelService.salvar(this.painel);      
+    }
+  }
 
 }

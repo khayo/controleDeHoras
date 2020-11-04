@@ -8,21 +8,20 @@ import { HoraService } from "./shared";
 import { ListarHoraComponent } from './listar';
 import { CadastrarHoraComponent } from './cadastrar';
 import { EditarHoraComponent } from './editar';
-
-import { FormDebugComponent } from './shared/form-debug';
+import { SharedModule } from '../shared';
 
 
 @NgModule({
   declarations: [
     ListarHoraComponent,
     CadastrarHoraComponent,
-    EditarHoraComponent,
-    FormDebugComponent
+    EditarHoraComponent  
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    SharedModule,
     IonicModule    
   ],
   providers: [

@@ -15,6 +15,6 @@ export class PainelService {
 
   salvar(painel: Painel): void {
     const parametros = this.exibir();
-    localStorage['painel'] = JSON.stringify(parametros);
+    localStorage['painel'] = JSON.stringify(painel);
   }
 }
