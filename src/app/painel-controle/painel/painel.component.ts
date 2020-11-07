@@ -44,7 +44,8 @@ export class PainelComponent implements OnInit {
       return false;
     } else {
       this.painel = this.form.value;
-      this.painelService.salvar(this.painel);      
+      this.painelService.salvar(this.painel); 
+      this.router.navigate(["/horas"]);     
     }
   }
 
