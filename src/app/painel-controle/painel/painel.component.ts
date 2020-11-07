@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EditarHoraComponent } from 'src/app/horas/editar';
 import { Painel, PainelService } from '../shared';
 
 @Component({
@@ -22,7 +23,6 @@ export class PainelComponent implements OnInit {
   ngOnInit() {
     this.gerarForm();
     this.exibir();
-    console.log('ngOnInit');
   }
 
   gerarForm() {
@@ -37,7 +37,6 @@ export class PainelComponent implements OnInit {
 
   exibir() {
     this.painel = this.painelService.exibir();
-    console.log(this.painel);
     this.form.setValue(this.painel);  
   }
 
