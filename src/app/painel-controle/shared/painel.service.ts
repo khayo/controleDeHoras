@@ -10,11 +10,10 @@ export class PainelService {
 
   exibir(): Painel {
     const painel = localStorage['painel'];
-    return painel ? JSON.parse(painel) : [];
+    return painel ? JSON.parse(painel) : new Painel(null,null, null,null,null);
   } 
 
   salvar(painel: Painel): void {
-    const parametros = this.exibir();
     localStorage['painel'] = JSON.stringify(painel);
   }
 }
