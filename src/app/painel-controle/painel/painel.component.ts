@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EditarHoraComponent } from 'src/app/horas/editar';
 import { Painel, PainelService } from '../shared';
 
 @Component({
