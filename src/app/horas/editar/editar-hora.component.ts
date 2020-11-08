@@ -14,7 +14,6 @@ export class EditarHoraComponent implements OnInit {
   hora: Hora;
   form: FormGroup;
 
-
   tipoRegistro = TipoRegistro;
   setor = Setor;
   keysTipoRegistro = [];
@@ -37,18 +36,14 @@ export class EditarHoraComponent implements OnInit {
     const id = +this.route.snapshot.params['id'];
     this.gerarForm();
     this.hora = this.horaService.buscaPorId(id);
-    this.preencheForm();
+    this.form.setValue(this.hora);
+    this.form.get('hora').setValue(new Date(this.hora.hora).toString());
   }
 
   gerarForm() {
     this.form = this.fb.group({
       id: ['', []],
       hora: ['', []],
-      dia: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(1), Validators.max(31)]],
-      mes: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(1), Validators.max(12)]],
-      ano: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-      horario: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(0), Validators.max(23)]],
-      minuto: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2), Validators.min(0), Validators.max(60)]],
       tipo: ['', [Validators.required]],
       ultimoCliente: ['', []],
       equipe: ['', []],
@@ -58,7 +53,7 @@ export class EditarHoraComponent implements OnInit {
 
   atualizar() {
     if (this.form.invalid) return;
-    this.preencheObjeto();
+    this.hora = this.form.value;
     this.horaService.atualizar(this.hora);
     this.router.navigate(["/horas"]);
     let msg = "Apontamento atualizado.";
@@ -72,16 +67,16 @@ export class EditarHoraComponent implements OnInit {
     this.mensagemToast(msg);
   }
 
-  preencheObjeto() {
+  /* preencheObjeto() {
     this.hora.id = this.form.get('id').value;
-    this.hora.hora = this.transformaData();
+    this.hora.hora = new Date (this.form.get('data').value).getTime();
     this.hora.tipo = this.form.get('tipo').value;
     this.hora.ultimoCliente = this.form.get('ultimoCliente').value;
     this.hora.equipe = this.form.get('equipe').value;
     this.hora.setor = this.form.get('setor').value;
-  }
+  } */
 
-  transformaData() {
+/*   transformaData() {
     let dia = this.form.get('dia').value;
     let mes = this.form.get('mes').value - 1; //por algum motivo ele está salvando com 1 mes a mais
     let ano = this.form.get('ano').value;
@@ -90,8 +85,9 @@ export class EditarHoraComponent implements OnInit {
 
     return new Date(ano, mes, dia, horario, minuto).getTime();
   }
+  */
 
-  preencheForm() {
+/*   preencheForm() {
     let temp = new Date(this.hora.hora);
     let dia = temp.getDate();
     let mes = temp.getMonth() + 1; //por algum motivo esta mostrando com um mês a menos
@@ -112,7 +108,10 @@ export class EditarHoraComponent implements OnInit {
     this.form.get('equipe').setValue(this.hora.equipe);
     this.form.get('setor').setValue(this.hora.setor);
 
-  }
+    this.form.get('data').setValue(temp.toString());
+    this.form.get('horarios').setValue(temp.toString());
+
+  } */
 
   async mensagemToast(msg: string) {
     const toast = await this.toastController.create({
