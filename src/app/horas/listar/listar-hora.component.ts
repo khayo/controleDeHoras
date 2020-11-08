@@ -16,14 +16,6 @@ export class ListarHoraComponent implements OnInit {
 
   ngOnInit() {
     this.horas = this.listarTodos();
-    /* mockObject para teste */
-/*     let data = Date.now();   
-    let teste = new  Date().getTime();
-    this.horas = [
-      new Hora(1, TipoRegistro.ENTRADA, data, "Setin Downtown", "Guilherme", Setor.EMERGENCIA),
-      new Hora(2, TipoRegistro.SAIDA, teste,"Murano", "Guilherme", Setor.PREVENTIVA),
-    ] ; */
-
   }
 
   ionViewWillEnter(){

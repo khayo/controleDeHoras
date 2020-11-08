@@ -26,8 +26,13 @@
       </ion-card-header>
 
       <!-- card para tipo de registro de saída -->
-      <ion-card-header *ngIf="hora.tipo === 'SAIDA'">
+      <ion-card-header *ngIf="(hora.tipo === 'SAIDA') && hora.equipe != ''">
         <ion-card-subtitle>{{ tipoRegistro[hora.tipo] }} - {{ setor[hora.setor] }} - {{ hora.equipe }} </ion-card-subtitle>
+        <ion-card-title>{{ hora.hora | date: 'dd/MM/yyyy HH:mm'}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-header *ngIf="(hora.tipo === 'SAIDA') && hora.equipe == ''">
+        <ion-card-subtitle>{{ tipoRegistro[hora.tipo] }} - {{ setor[hora.setor] }}</ion-card-subtitle>
         <ion-card-title>{{ hora.hora | date: 'dd/MM/yyyy HH:mm'}}</ion-card-title>
       </ion-card-header>
     </ion-card>
