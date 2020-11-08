@@ -9,6 +9,11 @@
 <ion-content>
   <form [formGroup]="form" novalidate>
     <ion-item>
+      <ion-label position="stacked">Data</ion-label> 
+      <ion-datetime display-format="DD/MM/YYYY - HH:mm" pickerFormat="DD/MM/YYYY - HH:mm" formControlName="hora"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
       <ion-label position="stacked">Tipo</ion-label>
       <ion-select formControlName="tipo" id="tipo" interface="action-sheet" placeholder="Selecione...">
         <ion-select-option *ngFor="let key of keysTipoRegistro" [value]="key">

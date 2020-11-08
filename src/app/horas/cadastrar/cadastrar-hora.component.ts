@@ -24,9 +24,9 @@ export class CadastrarHoraComponent implements OnInit {
     private horaService: HoraService,
     private fb: FormBuilder,
     private router: Router) {
-      this.keysTipoRegistro = Object.keys(this.tipoRegistro);
-      this.keysSetor = Object.keys(this.setor);
-     }
+    this.keysTipoRegistro = Object.keys(this.tipoRegistro);
+    this.keysSetor = Object.keys(this.setor);
+  }
 
   ngOnInit() {
     this.gerarForm();
@@ -39,32 +39,26 @@ export class CadastrarHoraComponent implements OnInit {
       tipo: ['', [Validators.required]],
       ultimoCliente: ['', []],
       equipe: ['', []],
-      setor: ['',[]]
+      setor: ['', []]
     })
   }
 
-  cadastrar(){
-    if(this.form.invalid){
-      return false;
-    }
-    else {
-      this.hora = this.form.value;
-      this.horaService.cadastrar(this.hora);
-      this.router.navigate(["/horas"]);
-      let msg = "Apontamento realizado com sucesso";
-      this.confirmacaoToast(msg);
-    }
+  cadastrar() {
+    if (this.form.invalid) return;
+
+    this.hora = this.form.value;
+    this.horaService.cadastrar(this.hora);
+    this.router.navigate(["/horas"]);
+    let msg = "Apontamento realizado com sucesso";
+    this.confirmacaoToast(msg);
+
   }
 
-  async confirmacaoToast(msg: string){
+  async confirmacaoToast(msg: string) {
     const toast = await this.toastController.create({
       message: msg,
       duration: 2000
     });
     toast.present();
-  }
-
-  teste(){
-    console.log(this.form.controls);
   }
 }
