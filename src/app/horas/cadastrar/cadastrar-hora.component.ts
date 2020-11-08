@@ -45,7 +45,6 @@ export class CadastrarHoraComponent implements OnInit {
 
   cadastrar(){
     if(this.form.invalid){
-      console.log('Informe todos os dados');
       return false;
     }
     else {
