@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hora, HoraService, Setor, TipoRegistro } from '../shared';
-import { ToastController } from "@ionic/angular";
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { ToastController, AlertController } from "@ionic/angular";
 
 @Component({
   selector: 'app-editar-hora',
@@ -22,6 +21,7 @@ export class EditarHoraComponent implements OnInit {
   keysSetor = [];
 
   constructor(
+    public alertController: AlertController,
     private toastController: ToastController,
     private horaService: HoraService,
     private fb: FormBuilder,
@@ -62,20 +62,15 @@ export class EditarHoraComponent implements OnInit {
     this.horaService.atualizar(this.hora);
     this.router.navigate(["/horas"]);
     let msg = "Apontamento atualizado.";
-    this.menssagemToast(msg);
+    this.mensagemToast(msg);
   }
 
-
-  remover($event: any, hora: Hora): void {
-    $event.preventDefault();
-    if(confirm('Deseja remover este registro?')){
-      this.horaService.remover(hora.id);
-      this.router.navigate(["/horas"]);
-      let msg = "Apontamento apagado com sucesso!"
-      this.menssagemToast(msg);
-    }
+  remover(hora: Hora): void {
+    this.horaService.remover(hora.id);
+    this.router.navigate(["/horas"]);
+    let msg = "Apontamento apagado com sucesso!"
+    this.mensagemToast(msg);
   }
-
 
   preencheObjeto() {
     this.hora.id = this.form.get('id').value;
@@ -98,10 +93,6 @@ export class EditarHoraComponent implements OnInit {
 
   preencheForm() {
     let temp = new Date(this.hora.hora);
-    console.log('hora.hora')
-    console.log(this.hora.hora);
-    console.log('temp')
-    console.log(temp);
     let dia = temp.getDate();
     let mes = temp.getMonth() + 1; //por algum motivo esta mostrando com um mês a menos
     let ano = temp.getFullYear();
@@ -123,7 +114,7 @@ export class EditarHoraComponent implements OnInit {
 
   }
 
-  async menssagemToast(msg: string) {
+  async mensagemToast(msg: string) {
     const toast = await this.toastController.create({
       message: msg,
       duration: 2000
@@ -131,11 +122,27 @@ export class EditarHoraComponent implements OnInit {
     toast.present();
   }
 
-  debud() {
-    console.log(this.form.value);
-    this.transformaData();
+  async confirmarExclusao(hora: Hora) {
+    const alert = await this.alertController.create({
+      header: 'Atenção',
+      message: 'Deseja remover este registro?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
+            this.mensagemToast('Exclusão cancelada');
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            this.remover(hora);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
-
 }
 
 
