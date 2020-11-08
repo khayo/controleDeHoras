@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hora, HoraService, Setor, TipoRegistro } from '../shared';
+import { ToastController } from "@ionic/angular";
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-editar-hora',
@@ -20,6 +22,7 @@ export class EditarHoraComponent implements OnInit {
   keysSetor = [];
 
   constructor(
+    private toastController: ToastController,
     private horaService: HoraService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -58,6 +61,8 @@ export class EditarHoraComponent implements OnInit {
     this.preencheObjeto();
     this.horaService.atualizar(this.hora);
     this.router.navigate(["/horas"]);
+    let msg = "Apontamento atualizado.";
+    this.menssagemToast(msg);
   }
 
 
@@ -66,6 +71,8 @@ export class EditarHoraComponent implements OnInit {
     if(confirm('Deseja remover este registro?')){
       this.horaService.remover(hora.id);
       this.router.navigate(["/horas"]);
+      let msg = "Apontamento apagado com sucesso!"
+      this.menssagemToast(msg);
     }
   }
 
@@ -114,6 +121,14 @@ export class EditarHoraComponent implements OnInit {
     this.form.get('equipe').setValue(this.hora.equipe);
     this.form.get('setor').setValue(this.hora.setor);
 
+  }
+
+  async menssagemToast(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 
   debud() {

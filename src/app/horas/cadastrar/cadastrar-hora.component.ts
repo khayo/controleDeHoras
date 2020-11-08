@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Hora, HoraService, Setor, TipoRegistro } from '../shared';
+import { ToastController } from "@ionic/angular";
 
 @Component({
   selector: 'app-cadastrar-hora',
@@ -19,6 +20,7 @@ export class CadastrarHoraComponent implements OnInit {
   keysSetor = [];
 
   constructor(
+    private toastController: ToastController,
     private horaService: HoraService,
     private fb: FormBuilder,
     private router: Router) {
@@ -50,7 +52,17 @@ export class CadastrarHoraComponent implements OnInit {
       this.hora = this.form.value;
       this.horaService.cadastrar(this.hora);
       this.router.navigate(["/horas"]);
+      let msg = "Apontamento realizado com sucesso";
+      this.confirmacaoToast(msg);
     }
+  }
+
+  async confirmacaoToast(msg: string){
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 
   teste(){
