@@ -1,3 +1,4 @@
+import { isEmptyExpression } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 import { Hora } from "./";
@@ -16,8 +17,10 @@ export class HoraService {
 
   cadastrar(hora: Hora): void {
     const horas = this.listarTodos();
-    hora.id = new Date().getTime();
-    hora.hora = new Date().getTime();
+    hora.id = new Date().getTime();    
+    console.log(hora.hora);
+    console.log(hora);
+    !hora.hora ? hora.hora = new Date().getTime() : hora.hora = new Date(hora.hora).getTime();
     horas.push(hora);
     localStorage['horas'] = JSON.stringify(horas);
   }
@@ -30,11 +33,11 @@ export class HoraService {
   atualizar(hora: Hora): void {
     const horas: Hora[] = this.listarTodos();
     horas.forEach((obj, index, objs) => {
-    if(hora.id === obj.id) {
-      objs[index] = hora;
-    }
-  });
-  localStorage['horas'] = JSON.stringify(horas);
+      if (hora.id === obj.id) {
+        objs[index] = hora;
+      }
+    });
+    localStorage['horas'] = JSON.stringify(horas);
   }
 
   remover(id: number): void {
