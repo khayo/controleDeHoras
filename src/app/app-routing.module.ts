@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HorasRoutes } from "./horas";
 import { PainelRoutes } from './painel-controle';
+import { ArquivoRoutes } from './arquivo';
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   ...HorasRoutes,
-  ...PainelRoutes
+  ...PainelRoutes,
+  ...ArquivoRoutes
 ];
 
 @NgModule({

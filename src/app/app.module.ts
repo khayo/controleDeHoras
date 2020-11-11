@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HorasModule } from './horas';
 import { PainelControleModule } from './painel-controle';
+import { ArquivoModule } from './arquivo';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import { PainelControleModule } from './painel-controle';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HorasModule,
-    PainelControleModule
+    PainelControleModule,
+    ArquivoModule
   ],
   providers: [
     StatusBar,
