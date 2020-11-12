@@ -17,8 +17,6 @@ export class HoraService {
   cadastrar(hora: Hora): void {
     const horas = this.listarTodos();
     hora.id = new Date().getTime();    
-    console.log(hora.hora);
-    console.log(hora);
     !hora.hora ? hora.hora = new Date().getTime() : hora.hora = new Date(hora.hora).getTime();
     horas.push(hora);
     localStorage['horas'] = JSON.stringify(horas);
