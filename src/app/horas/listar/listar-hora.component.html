@@ -32,7 +32,7 @@
       </ion-card-header>
 
       <ion-card-header *ngIf="(hora.tipo === 'SAIDA') && hora.equipe == ''">
-        <ion-card-subtitle>{{ tipoRegistro[hora.tipo] }} - {{ setor[hora.setor] }}</ion-card-subtitle>
+        <ion-card-subtitle>{{ tipoRegistro[hora.tipo] }}</ion-card-subtitle>
         <ion-card-title>{{ hora.hora | date: 'dd/MM/yyyy HH:mm'}}</ion-card-title>
       </ion-card-header>
     </ion-card>
