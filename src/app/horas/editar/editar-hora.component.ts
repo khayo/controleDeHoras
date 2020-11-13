@@ -54,6 +54,7 @@ export class EditarHoraComponent implements OnInit {
   atualizar() {
     if (this.form.invalid) return;
     this.hora = this.form.value;
+    this.hora.hora = new Date(this.hora.hora).getTime();
     this.horaService.atualizar(this.hora);
     this.router.navigate(["/horas"]);
     let msg = "Apontamento atualizado.";

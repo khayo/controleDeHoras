@@ -32,7 +32,6 @@ export class HoraService {
     horas.forEach((obj, index, objs) => {
       if (hora.id === obj.id) {
         objs[index] = hora;
-        objs[index].hora = new Date().getTime() 
       }
     });
     localStorage['horas'] = JSON.stringify(horas);
