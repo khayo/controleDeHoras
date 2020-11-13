@@ -7,5 +7,31 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-card *ngFor="let hora of horas" [routerLink]="['/horas/editar', hora.id]">
+      
+      <!-- card para outros tipos de registro diferentes de saida -->
+      <ion-card-header *ngIf="hora.tipo !== 'SAIDA'">
+        <ion-card-subtitle>{{tipoRegistro[hora.tipo]}}</ion-card-subtitle>
+        <ion-card-title>{{hora.hora | date: 'dd/MM/yyyy HH:mm'}}</ion-card-title>
+      </ion-card-header>
 
-</ion-content> 
+      <!-- card para tipo de registro de saída -->
+      <ion-card-header *ngIf="(hora.tipo === 'SAIDA') && hora.equipe != ''">
+        <ion-card-subtitle>{{ tipoRegistro[hora.tipo] }} - {{ setor[hora.setor] }} - {{ hora.equipe }} </ion-card-subtitle>
+        <ion-card-title>{{ hora.hora | date: 'dd/MM/yyyy HH:mm'}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-header *ngIf="(hora.tipo === 'SAIDA') && hora.equipe == ''">
+        <ion-card-subtitle>{{ tipoRegistro[hora.tipo] }}</ion-card-subtitle>
+        <ion-card-title>{{ hora.hora | date: 'dd/MM/yyyy HH:mm'}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <!-- card para quando a lista estiver vazia -->
+    <ion-card *ngIf="horas.length==0">
+      <ion-card-content>Nenhuma hora arquivada.</ion-card-content>
+    </ion-card>
+
+  </ion-list>
+</ion-content>
