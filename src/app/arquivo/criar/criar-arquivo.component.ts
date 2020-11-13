@@ -17,4 +17,8 @@ export class CriarArquivoComponent implements OnInit {
   arquivarTodos() {
     this.arquivoService.arquivarTodos();
   }
+
+  mesAnterior(){
+    this.arquivoService.arquivarMesAnterior();
+  }
 }
