@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArquivoService } from '../shared';
 
 @Component({
   selector: 'app-criar-arquivo',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CriarArquivoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private arquivoService: ArquivoService
+  ) { }
 
   ngOnInit() {}
 
+  arquivarTodos() {
+    this.arquivoService.arquivarTodos();
+  }
 }
